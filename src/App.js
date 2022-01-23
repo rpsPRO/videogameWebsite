@@ -41,6 +41,7 @@ function App() {
   return (
     <div className="App">
       <Header/>
+      <GameList videogamesList ={videogames}/>
     </div>
   );
 }
