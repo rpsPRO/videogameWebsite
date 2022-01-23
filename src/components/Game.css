@@ -1,0 +1,41 @@
+* {
+    box-sizing: border-box;
+}
+
+.game {
+    border: 1px solid white;
+    display: inline-block;
+    margin-top: 10%;
+    margin-left: 1%;
+    width: auto;
+    height: 25%;
+    text-align: center;
+}
+
+.gameName{
+    width: auto;
+    padding: 5%;
+    border: 1px solid white;
+    background-color: rgb(143, 108, 44);
+}
+
+.gamePrice{
+    width: auto;  
+}
+
+.gameReleaseDate{
+    width: auto;
+}
+
+.gameImage {
+    width: auto;
+    margin: 10% auto;
+    border: 1px solid white;
+    background-color: rgb(26, 34, 41);
+}
+
+.gameImage img{
+    width: auto;
+    margin: 10% auto;
+    height: 200px;
+}
