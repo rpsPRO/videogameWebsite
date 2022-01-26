@@ -1,17 +1,31 @@
 
+* {
+  margin: 0;
+  background: rgb(24, 14, 14);
+  
+}
+
 .App {
   padding: 2vw;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: #222;
-  background-image: repeating-linear-gradient(
+  
+  /*background-image: repeating-linear-gradient(
     to bottom,
     transparent 7px,
     rgba(0, 0, 0, 0.8) 9px,
     rgba(0, 0, 0, 0.8) 13px,
     transparent 13px
-  );
+  );*/
+  color: white;
+  text-align: center;
+  font-family: 'Sedgwick Ave', cursive;
+}
+
+img {
+  display: block;
+  width: 20%;
+  margin: 30px auto;
 }
 
 
