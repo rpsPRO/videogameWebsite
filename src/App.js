@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/Header';
 import {GameList} from './components/GameList';
 import { useState } from 'react';
+import GameForm from './components/GameForm';
 
 function App() {
 
@@ -40,14 +41,17 @@ function App() {
 
   const deleteGame = (id) => {
       let newList = videogames.filter(obj => obj.id !== id);
-      console.log(newList);
       setVideogames(newList);
-      console.log("Juego borrado");
+  }
+
+  const addGame = (game) => {
+      setVideogames([...videogames,game]);
   }
 
   return (
     <div className="App">
       <Header/>
+      <GameForm videogamesList ={videogames} addGame={addGame} />
       <GameList onDeleteGame = {deleteGame} videogamesList ={videogames}/>
     </div>
   );
