@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import './Game.css';
 
-export function Game(props) {
+export function Game({game, onDeleteGame}) {
 
-    const game = props.game;
+    const [name, setName] = useState(game.name);
+
 
     const releaseDate = game => {
         let date = new Date(game.releaseDate);
@@ -12,12 +14,21 @@ export function Game(props) {
         return day + "/" + month + "/" + year;
     };
 
+    function deleteGame(event) {
+        console.log(event.target.id);
+        onDeleteGame(event.target.id);
+    }
+
+    
+
+
     return (
         <div className="game">
-            <div className="gameName">{game.name}</div>
-            <div className="gamePrice">Precio: {game.price}€</div>
-            <div className="gameReleaseDate">Fecha de lanzamaiento: {releaseDate(game)}</div>
+            <div className="gameName">{name}</div>
+            <div className="gamePrice">Price: {game.price}€</div>
+            <div className="gameReleaseDate">Release date: {releaseDate(game)}</div>
             <div className="gameImage"><img src={game.imageURL} alt={game.name} /></div>
+            <button id={game.id} type='button' onClick={deleteGame}>Delete game</button>
         </div>
     );
 }

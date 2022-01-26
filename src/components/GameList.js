@@ -1,15 +1,19 @@
+
 import { Game } from "./Game";
 import './GameList.css';
 
-export function GameList(props){
-
+export function GameList({onDeleteGame, videogamesList}){
+    
     return (
         <div className="gameList">
-            {
-                props.videogamesList.map(game => {
-                    return <Game key={game.id} game={game}/>;
-                })
-            }
+                
+                {
+                    videogamesList.map(game => {
+                        return <Game key = {game.id} onDeleteGame = {onDeleteGame} game={game}/>;
+                    })
+                }
+            
+            
         </div>
     );
 }

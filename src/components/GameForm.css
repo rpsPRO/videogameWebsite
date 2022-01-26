@@ -1,0 +1,28 @@
+
+.gameForm {
+    margin-top: 50px;
+    padding: 30px;
+    border: 2px solid rgb(165, 165, 0);
+    display: inline-block;
+}
+p {
+    margin: 5px;
+    font-size: 2em;
+}
+
+.gameForm div{
+    font-size: 1.5em;
+}
+
+input{
+    margin-left: 5px;
+    background-color: white;
+    font-size: 1em;
+}
+
+.gameForm button {
+    margin-top: 20px;
+    font-size: 1.5em;
+    background-color: blue;
+}
+

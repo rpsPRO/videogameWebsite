@@ -5,4 +5,5 @@ h1 {
     text-align: center;
     animation: blink 12s infinite;
     -webkit-animation: blink 12s infinite;
+    font-size: 4em;
 }

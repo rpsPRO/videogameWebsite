@@ -1,10 +1,12 @@
 import './App.css';
 import Header from './components/Header';
 import {GameList} from './components/GameList';
+import { useState } from 'react';
+import GameForm from './components/GameForm';
 
 function App() {
 
-  const videogames = [
+  const lista = [
     {
       id: "g1",
       name: "New Super Mario Bros",
@@ -35,13 +37,22 @@ function App() {
     }
   ];
 
+  const [videogames, setVideogames] = useState(lista);
 
+  const deleteGame = (id) => {
+      let newList = videogames.filter(obj => obj.id !== id);
+      setVideogames(newList);
+  }
 
+  const addGame = (game) => {
+      setVideogames([...videogames,game]);
+  }
 
   return (
     <div className="App">
       <Header/>
-      <GameList videogamesList ={videogames}/>
+      <GameForm videogamesList ={videogames} addGame={addGame} />
+      <GameList onDeleteGame = {deleteGame} videogamesList ={videogames}/>
     </div>
   );
 }
