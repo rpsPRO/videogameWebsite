@@ -6,7 +6,8 @@ import GameForm from './Components/GameForm';
 import {getApiVideogames, postApiVideogame, deleteApiVideogame} from './Helpers/api';
 
 function App() {
-
+  const [loading,setLoading] = useState([]); 
+  const [error,setError] = useState(false);
   const [videogames, setVideogames] = useState([]);
 
   useEffect(
@@ -15,10 +16,13 @@ function App() {
           .then(
             newVideogames => {
               setVideogames(newVideogames);
+              setLoading(false);
             }
         ).catch(
             (err) => {
-              console.log("Error al descargar la api");
+              setLoading(false);
+              setError(true);
+              alert("Error al descargar la api");
             }
         )
     },
@@ -50,12 +54,22 @@ function App() {
       );
   }
 
+  const getLoadingOrList = ()=>{
+    return loading?
+    <img src = "loading.gif"/>:
+    (<GameList onDeleteGame = {deleteGame} videogamesList ={videogames}/>)
+  }
 
   return (
     <div className="App">
       <Header/>
-      <GameForm videogamesList ={videogames} addGame={addGame} />
-      <GameList onDeleteGame = {deleteGame} videogamesList ={videogames}/>
+      <GameForm videogamesList ={videogames} addGame={addGame}/>
+      {
+      error?
+      <img src="guaton-computadora.gif"/>:
+      getLoadingOrList()
+      }
+       
     </div>
   );
 }
