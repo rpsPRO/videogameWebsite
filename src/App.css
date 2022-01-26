@@ -22,4 +22,10 @@
   font-family: 'Sedgwick Ave', cursive;
 }
 
+img {
+  display: block;
+  width: 20%;
+  margin: 30px auto;
+}
+
 
