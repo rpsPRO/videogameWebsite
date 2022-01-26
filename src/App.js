@@ -1,52 +1,55 @@
 import './App.css';
-import Header from './components/Header';
-import {GameList} from './components/GameList';
-import { useState } from 'react';
-import GameForm from './components/GameForm';
+import Header from './Components/Header';
+import {GameList} from './Components/GameList';
+import { useState, useEffect } from 'react';
+import GameForm from './Components/GameForm';
+import {getApiVideogames, postApiVideogame, deleteApiVideogame} from './Helpers/api';
 
 function App() {
 
-  const lista = [
-    {
-      id: "g1",
-      name: "New Super Mario Bros",
-      price: 35,
-      releaseDate: "2006/5/15",
-      imageURL: "https://images-na.ssl-images-amazon.com/images/I/51CcAfal2VL.__AC_SY300_SX300_QL70_ML2_.jpg"
-    },
-    {
-      id: "g2",
-      name: "Professor Layton and The Curious Village",
-      price: 42,
-      releaseDate: "2007/2/15",
-      imageURL: "https://upload.wikimedia.org/wikipedia/en/1/1b/Professor_Layton_and_the_Curious_Village_NA_Boxart.JPG"
-    },
-    {
-      id: "g3",
-      name: "Inazuma Eleven 2 Tormenta de Fuego",
-      price: 14.99,
-      releaseDate: "2012/3/16",
-      imageURL: "https://emu-games.com/wp-content/uploads/2018/12/BEES-420x372.jpg"
-    },
-    {
-      id: "g4",
-      name: "Mario Kart DS",
-      price: 12.95,
-      releaseDate: "2005/11/14",
-      imageURL: "https://m.media-amazon.com/images/I/51EyQ8vtdsL._AC_.jpg"
-    }
-  ];
+  const [videogames, setVideogames] = useState([]);
 
-  const [videogames, setVideogames] = useState(lista);
+  useEffect(
+    () => {
+      getApiVideogames()
+          .then(
+            newVideogames => {
+              setVideogames(newVideogames);
+            }
+        ).catch(
+            (err) => {
+              console.log("Error al descargar la api");
+            }
+        )
+    },
+    []
+);
+
+  
 
   const deleteGame = (id) => {
-      let newList = videogames.filter(obj => obj.id !== id);
-      setVideogames(newList);
+    deleteApiVideogame(id).then(
+        () => {
+            const newVideogames = videogames.filter(
+              videogame => videogame.id !== id
+            );
+            setVideogames(newVideogames);
+        }
+      ).catch(err => {
+          alert(err);
+      });
   }
 
   const addGame = (game) => {
-      setVideogames([...videogames,game]);
+    postApiVideogame(game).then(
+        (savedVideogame) => {
+          setVideogames([...videogames,savedVideogame]);
+        }
+      ).catch(
+          err => alert("No se ha podido guardar")
+      );
   }
+
 
   return (
     <div className="App">
