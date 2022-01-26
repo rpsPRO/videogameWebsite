@@ -1,5 +1,8 @@
 
 .gameList {
-    margin: 0px auto;
+    margin: 2% auto;
     width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
