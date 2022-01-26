@@ -26,12 +26,10 @@ const GameForm = ({videogamesList,addGame}) => {
         setUrl(event.target.value);
     }
 
-    const [numElementosLista, setNumElementosLista] = useState(videogamesList.length);
 
     const registerGame = () => {
         
         const newGame = {
-            id: "g"+(numElementosLista+1),
             name,
             price,
             releaseDate: date,
@@ -39,7 +37,6 @@ const GameForm = ({videogamesList,addGame}) => {
         }
 
         addGame(newGame);
-        setNumElementosLista(numElementosLista+1);
         resetForm();
     }
 
