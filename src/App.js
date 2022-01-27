@@ -1,8 +1,8 @@
 import './App.css';
-import Header from './Components/Header';
-import {GameList} from './Components/GameList';
+import Header from './components/Header';
+import {GameList} from './components/GameList';
 import { useState, useEffect } from 'react';
-import GameForm from './Components/GameForm';
+import GameForm from './components/GameForm';
 import {getApiVideogames, postApiVideogame, deleteApiVideogame} from './Helpers/api';
 
 function App() {
